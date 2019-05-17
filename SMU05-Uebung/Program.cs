@@ -15,7 +15,11 @@ namespace SMUE5Uebung
         static string obstSchüssel = "Pflaumen;Apfel;Limonen;Brombeere;Brombeere;Apfel;Mango;Limone;Erdbeer;Apfel;Birnen;Wassermelone;Feigen;Apfel;Trauben;Birnen;Zitronen;Apfel;Birnen;Feigen;;;";
 
         // hier implementieren
-        internal static int DateiLesen1()
+        // diese Funktion soll die Datei uebung01 zeilenweise einlesen
+        // in jeder Zeile stehen Zahlen durch ein Leerzeichen getrennt
+        // alle Zahlen aller Zeilen die größer als 50 sind, sollen aufsummiert werden
+        // die Funktion liefert dann diese Summe zurück
+        internal static int DateiLesen()
         {
             // aktuelles Verzeichnis ist /bin/debug ... daher 2 Verzeichnisse hinauf
             StreamReader stream = new StreamReader(@"../../uebung01.csv");
@@ -30,6 +34,9 @@ namespace SMUE5Uebung
         }
 
         // hier implementieren
+        // Diese Funktion soll eine neue Liste an Obst zurückgeben.
+        // Die Liste die übergeben wird enthält "Birne", die zurückgegebene Liste soll keine Birnen mehr enthalten.
+        // Oder anders formuliert: Erstelle eine neue Liste, die alles bis auf "Birne" von der Originalliste enthält.
         private static List<string> ListeOhneBirnen(List<string> obstL)
         {
             throw new NotImplementedException();
@@ -54,7 +61,7 @@ namespace SMUE5Uebung
 
         static void Main(string[] args)
         {
-            Console.WriteLine($"Summe 1: {DateiLesen1()}"); // Summe 1: 11643
+            Console.WriteLine($"Summe 1: {DateiLesen()}"); // Summe 1: 11643
             Console.ReadKey();
             Console.WriteLine($"Liste ohne Birnen: {ListeOhneBirnen(obstListe).Count}"); // Liste ohne Birnen: 41
             Console.ReadKey();
