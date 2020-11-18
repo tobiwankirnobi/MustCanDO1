@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMUE5Uebung
+namespace UebungMustCanDo01
 {
     class Program
     {

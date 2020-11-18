@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3FA68289-F52F-4EDE-8DBA-A4DACF884E26}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SMU05_Uebung</RootNamespace>
+    <RootNamespace>UebungMustCanDo01</RootNamespace>
     <AssemblyName>SMU05-Uebung</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
