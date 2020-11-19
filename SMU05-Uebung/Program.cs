@@ -24,13 +24,22 @@ namespace UebungMustCanDo01
             // aktuelles Verzeichnis ist /bin/debug ... daher 2 Verzeichnisse hinauf
             StreamReader stream = new StreamReader(@"../../uebung01.csv");
             // solange nicht "end of stream" erreicht ist ... führe den folgenden Block aus
+            int summe = 0;
             while (stream.EndOfStream == false)
             {
                 string line = stream.ReadLine();
+                string[] numbers = line.Split(' ');
+                foreach (string i in numbers)
+                {
+                    if (Convert.ToInt32(i) > 50)
+                    {
+                        summe += Convert.ToInt32(i);
+                    }
+                }
             }
             // den stream am Ende des Lesens wieder schliessen!
             stream.Close();
-            return 0;
+            return summe;
         }
 
         // hier implementieren
@@ -39,7 +48,13 @@ namespace UebungMustCanDo01
         // Oder anders formuliert: Erstelle eine neue Liste, die alles bis auf "Birne" von der Originalliste enthält.
         private static List<string> ListeOhneBirnen(List<string> obstL)
         {
-            throw new NotImplementedException();
+            List<string> newobstL = obstL;
+            newobstL.RemoveAll(IsBirne);
+            return newobstL;
+        }
+        private static bool IsBirne(string s)
+        {
+            return s.ToLower() == "birne";
         }
 
 
@@ -47,12 +62,32 @@ namespace UebungMustCanDo01
         // diese Funktion bekommt einen string obst
         // wenn das obst ein Apfel, Birnen oder Brombere ist, dann gibt die Funktion das Obst als Mus zurück .. dh aus "Apfel" wird "Apfelmus"
         // für alle anderen Obstsorten werden Würfel zurückgegeben z.B. Feigenwürfel
-
+        private static string ObstKlein(string Obst)
+        {
+            List<string> Musobst = new List<string> { "Apfel", "Birnen", "Brombere" };
+            if (Musobst.Contains(Obst))
+            {
+                return $"{Obst}mus";
+            }
+            if (Obst == "")
+            {
+                throw new Exception();
+            }
+            else return $"{Obst}würfel";
+        }
         // Implementiere eine Funktion: MacheObstSalat
         // Diese Funktion bekommt einen String ObstSchüssel - der Obst durch ; getrennt enthält
         // Schreibt den Code der den übergebenen String nach ";" aufteilt und für jedes Obst die Funktion ObstKlein aufruft und das Ergebnis am 
         // Bildschirm ausgibt. Achtung das Ende der ObstSchüssel ist etwas, das ihr beachten müsst.
+        private static void MacheObstSalat(string ObstSchüssel)
+        {
+            string[] AllDasObst = ObstSchüssel.Split(';');
+            foreach(string i in AllDasObst)
+            {
+                Console.WriteLine(ObstKlein(i));
+            }
 
+        }
 
         // hier ObstKlein implementieren
         // hier MacheObstSalat implementieren
@@ -65,7 +100,7 @@ namespace UebungMustCanDo01
             Console.ReadKey();
             Console.WriteLine($"Liste ohne Birnen: {ListeOhneBirnen(obstListe).Count}"); // Liste ohne Birnen: 41
             Console.ReadKey();
-            // MacheObstSalat(obstSchüssel);
+            MacheObstSalat(obstSchüssel);
             // PflaumenwürfelApfelmusLimonenwürfelBrombeerewürfelBrombeerewürfelApfelmusMangowürfelLimonewürfelErdbeerwürfelApfelmusBirnenmusWassermelonewürfelFeigenwürfelApfelmusTraubenwürfelBirnenmusZitronenwürfelApfelmusBirnenmusFeigenwürfel
             Console.ReadKey();
         }
